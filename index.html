@@ -8,23 +8,33 @@
     margin:0;
     padding:0;
     text-align:center;
-    background:#ffffff;
+    background:#000000; /* কালো ব্যাকগ্রাউন্ড */
     font-family:Arial, sans-serif;
+  }
+
+  .content {
+    display: inline-block;
+    margin-top:50px;
+    padding:20px;
+    background:#ffffff; /* ছবিগুলোর পিছনে হালকা ব্যাকগ্রাউন্ড চাইলে */
+    border-radius:15px;
   }
 
   img{
     width:100%;
-    max-width:400px;
-    margin-top:20px;
+    max-width:250px; /* ছবির সাইজ কমানো */
+    display:block;
+    margin:20px auto; /* পেজের মাঝখানে সেন্টারেড */
+    border-radius:10px;
   }
 
   .btn{
     display:inline-block;
     margin:30px 0;
-    padding:15px 35px;
+    padding:12px 30px;
     background:#ff3b3b;
     color:white;
-    font-size:20px;
+    font-size:18px;
     border-radius:10px;
     text-decoration:none;
     font-weight:bold;
@@ -37,14 +47,14 @@
 </head>
 <body>
 
-<img src="https://i.imgur.com/RIiQnS0.jpeg" alt="photo">
-<img src="https://i.imgur.com/jbGNrs0.gif" alt="gif">
+<div class="content">
+  <img src="https://i.imgur.com/RIiQnS0.jpeg" alt="photo">
+  <img src="https://i.imgur.com/jbGNrs0.gif" alt="gif">
 
-<br>
-
-<a href="https://www.effectivegatecpm.com/qckxhnmwr9?key=4eb1de3e823be95ed228fde4f1025ba7" 
-   target="_blank" 
-   class="btn">Download</a>
+  <a href="https://www.effectivegatecpm.com/qckxhnmwr9?key=4eb1de3e823be95ed228fde4f1025ba7" 
+     target="_blank" 
+     class="btn">Download</a>
+</div>
 
 </body>
 </html>
