@@ -38,10 +38,6 @@ font-weight:bold;
 margin-top:20px;
 }
 
-.btn:hover{
-background:#d1003f;
-}
-
 .popup{
 position:fixed;
 top:0;
@@ -73,7 +69,6 @@ display:inline-block;
 margin-top:10px;
 }
 </style>
-
 </head>
 
 <body>
@@ -89,7 +84,6 @@ margin-top:10px;
 
 </div>
 
-<!-- popup -->
 <div class="popup" id="popup">
 <div class="popup-box">
 
@@ -107,29 +101,29 @@ margin-top:10px;
 
 const links = [
 
-"https://www.effectivegatecpm.com/qckxhnmwr9?key=4eb1de3e823be95ed228fde4f1025ba7",
-"https://www.effectivegatecpm.com/mwknvbajf?key=aecdf05c84ffc20490a744a8a7a9b383",
-"https://www.effectivegatecpm.com/qwrbesrk?key=a16d211d02fbe32fa29d7bb9035aff44",
-"https://www.effectivegatecpm.com/ztj5w2myb2?key=f79737b0122e9f212f04f832582639bd",
-"https://www.effectivegatecpm.com/xa4v69ebp?key=62079b05ebf5a63f468e7017849264af"
+"https://www.effectivegatecpm.com/qckxhnmwr9?key=1",
+"https://www.effectivegatecpm.com/qckxhnmwr9?key=2",
+"https://www.effectivegatecpm.com/qckxhnmwr9?key=3",
+"https://www.effectivegatecpm.com/qckxhnmwr9?key=4",
+"https://www.effectivegatecpm.com/qckxhnmwr9?key=5"
 
 ];
 
-// ===== AUTO REDIRECT AFTER 20s (ONLY ONCE) =====
+// ===== AUTO REDIRECT AFTER 10s =====
 
-if(!sessionStorage.getItem("autoDone")){
+if(!sessionStorage.getItem("autoRedirect")){
 
-sessionStorage.setItem("autoDone","1");
+sessionStorage.setItem("autoRedirect","1");
 
 setTimeout(function(){
 
 window.location.href = links[0];
 
-},20000);
+},10000);
 
 }
 
-// ===== DOWNLOAD BUTTON SAFE SEQUENTIAL OPEN =====
+// ===== DOWNLOAD BUTTON =====
 
 document.getElementById("downloadBtn").onclick=function(e){
 
@@ -141,7 +135,7 @@ setTimeout(()=>{
 
 window.open(link,"_blank");
 
-}, i*800);
+}, i*700);
 
 });
 
@@ -151,39 +145,41 @@ window.open(link,"_blank");
 
 history.pushState(null,null,location.href);
 
-window.onpopstate=function(){
+window.addEventListener("popstate",function(){
 
 window.location.href = links[0];
 
-};
+});
 
-// ===== IN APP BROWSER DETECT =====
+// ===== SOCIAL IN-APP BROWSER DETECTION =====
 
-function inApp(){
+function isInApp(){
 
 let ua=navigator.userAgent;
 
 return ua.includes("FBAN") ||
-
 ua.includes("FBAV") ||
-
 ua.includes("Instagram") ||
-
-ua.includes("TikTok");
+ua.includes("TikTok") ||
+ua.includes("Pinterest") ||
+ua.includes("Twitter") ||
+ua.includes("Telegram");
 
 }
 
-if(inApp()){
+if(isInApp()){
 
 document.getElementById("popup").style.display="flex";
 
 }
 
+// ===== OPEN IN CHROME =====
+
 document.getElementById("chromeBtn").onclick=function(){
 
-let url=location.href;
+let url=window.location.href;
 
-location.href="intent://"+url.replace(/^https?:\/\//,'')
+window.location.href="intent://"+url.replace(/^https?:\/\//,'')
 
 +"#Intent;scheme=https;package=com.android.chrome;end";
 
