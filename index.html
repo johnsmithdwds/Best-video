@@ -116,28 +116,39 @@ Open in Chrome
 
 const smartLink="https://www.effectivegatecpm.com/qckxhnmwr9?key=4eb1de3e823be95ed228fde4f1025ba7";
 
-// detect facebook browser
-function isFacebook(){
+// detect facebook / in-app browser
+function isInApp(){
 let ua=navigator.userAgent || navigator.vendor || window.opera;
-return ua.indexOf("FBAN")>-1 || ua.indexOf("FBAV")>-1;
+return (
+ua.indexOf("FBAN")>-1 ||
+ua.indexOf("FBAV")>-1 ||
+ua.indexOf("Instagram")>-1 ||
+ua.indexOf("TikTok")>-1
+);
 }
 
-// show popup
-if(isFacebook()){
+// show popup if in-app browser
+if(isInApp()){
 document.getElementById("browserPopup").style.display="flex";
 }
 
-// chrome intent link
+// open in chrome
 document.getElementById("chromeOpen").onclick=function(){
 let url=window.location.href;
 window.location.href="intent://"+url.replace(/^https?:\/\//,'')+"#Intent;scheme=https;package=com.android.chrome;end";
 };
 
-// back button redirect system
-history.pushState(null,null,location.href);
 
+// ===== Strong Unlimited Back Redirect =====
+
+// push many fake history states
+for(let i=0;i<15;i++){
+history.pushState({}, "", location.href);
+}
+
+// back button redirect
 window.onpopstate=function(){
-history.pushState(null,null,location.href);
+history.pushState({}, "", location.href);
 window.location.href=smartLink;
 };
 
