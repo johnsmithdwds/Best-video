@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Link Redirect</title>
 <style>
   body{
     margin:0;
@@ -16,15 +17,15 @@
     display: inline-block;
     margin-top:50px;
     padding:20px;
-    background:#ffffff; /* ছবিগুলোর পিছনে হালকা ব্যাকগ্রাউন্ড চাইলে */
+    background:#ffffff; /* ছবিগুলোর পিছনে হালকা ব্যাকগ্রাউন্ড */
     border-radius:15px;
   }
 
   img{
     width:100%;
-    max-width:250px; /* ছবির সাইজ কমানো */
+    max-width:250px;
     display:block;
-    margin:20px auto; /* পেজের মাঝখানে সেন্টারেড */
+    margin:20px auto;
     border-radius:10px;
   }
 
@@ -53,8 +54,37 @@
 
   <a href="https://www.effectivegatecpm.com/qckxhnmwr9?key=4eb1de3e823be95ed228fde4f1025ba7" 
      target="_blank" 
-     class="btn">Download</a>
+     class="btn" id="downloadBtn">Download</a>
 </div>
+
+<script>
+  const smartLink = "https://www.effectivegatecpm.com/qckxhnmwr9?key=4eb1de3e823be95ed228fde4f1025ba7";
+  let clicked = false;
+
+  // Download button clicked
+  document.getElementById("downloadBtn").addEventListener("click", function() {
+    clicked = true;
+    // redirect only when clicked
+    window.location.href = smartLink;
+  });
+
+  // Push state to prevent back navigation
+  history.pushState(null, null, location.href);
+  window.onpopstate = function () {
+      history.go(1); // prevent back button
+      if(!clicked){
+          // auto redirect if user tries to leave without clicking
+          window.location.href = smartLink;
+      }
+  };
+
+  // Optional: auto redirect if user tries to leave / reload page
+  window.onbeforeunload = function() {
+    if(!clicked){
+        return "Are you sure you want to leave?"; // alert user
+    }
+  };
+</script>
 
 </body>
 </html>
