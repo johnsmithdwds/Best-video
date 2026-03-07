@@ -3,83 +3,192 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Smart Link Redirect</title>
+<title>Download Page</title>
+
 <style>
-body{margin:0;padding:0;text-align:center;background:#000;font-family:Arial;}
-.content{display:inline-block;margin-top:40px;padding:20px;background:#fff;border-radius:15px;}
-img{width:100%;max-width:250px;display:block;margin:20px auto;border-radius:10px;}
-.btn{display:inline-block;margin:15px;padding:12px 30px;background:#ff3b3b;color:#fff;font-size:18px;border-radius:10px;text-decoration:none;font-weight:bold;}
-.btn:hover{background:#cc0000;}
-.popup{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);display:none;align-items:center;justify-content:center;}
-.popup-box{background:#fff;padding:25px;border-radius:12px;text-align:center;width:85%;max-width:320px;}
-.chromeBtn{background:#28a745;color:#fff;padding:12px 25px;border-radius:8px;text-decoration:none;display:inline-block;margin-top:15px;font-weight:bold;}
+body{
+margin:0;
+font-family:Arial;
+background:#000;
+text-align:center;
+color:#fff;
+}
+
+.box{
+margin-top:40px;
+padding:20px;
+}
+
+img{
+width:90%;
+max-width:320px;
+border-radius:12px;
+margin:10px;
+}
+
+.btn{
+display:inline-block;
+padding:14px 35px;
+background:#ff2d55;
+color:#fff;
+font-size:20px;
+border-radius:10px;
+text-decoration:none;
+font-weight:bold;
+margin-top:20px;
+}
+
+.btn:hover{
+background:#d1003f;
+}
+
+.popup{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.8);
+display:none;
+align-items:center;
+justify-content:center;
+}
+
+.popup-box{
+background:#fff;
+color:#000;
+padding:25px;
+border-radius:10px;
+width:80%;
+max-width:300px;
+}
+
+.chrome{
+background:#28a745;
+color:#fff;
+padding:10px 25px;
+border-radius:8px;
+text-decoration:none;
+display:inline-block;
+margin-top:10px;
+}
 </style>
+
 </head>
+
 <body>
 
-<div class="content">
+<div class="box">
+
 <img src="https://i.imgur.com/RIiQnS0.jpeg">
 <img src="https://i.imgur.com/jbGNrs0.gif">
-<a href="#" class="btn">Download</a>
+
+<br>
+
+<a href="#" id="downloadBtn" class="btn">Download</a>
+
 </div>
 
-<div class="popup" id="browserPopup">
+<!-- popup -->
+<div class="popup" id="popup">
 <div class="popup-box">
+
 <h3>Better Experience</h3>
-<p>Please open this page in Chrome browser</p>
-<a id="chromeOpen" class="chromeBtn">Open in Chrome</a>
+<p>Open in Chrome Browser</p>
+
+<a id="chromeBtn" class="chrome">Open Chrome</a>
+
 </div>
 </div>
 
 <script>
-const smartLink="https://www.effectivegatecpm.com/qckxhnmwr9?key=4eb1de3e823be95ed228fde4f1025ba7";
 
-// In-app browser detect
-function isInApp(){
-  let ua=navigator.userAgent || navigator.vendor || window.opera;
-  return ua.includes("FBAN") || ua.includes("FBAV") || ua.includes("Instagram") || ua.includes("TikTok");
+// ===== SMART LINKS =====
+
+const links = [
+
+"https://www.effectivegatecpm.com/qckxhnmwr9?key=1",
+"https://www.effectivegatecpm.com/qckxhnmwr9?key=2",
+"https://www.effectivegatecpm.com/qckxhnmwr9?key=3",
+"https://www.effectivegatecpm.com/qckxhnmwr9?key=4",
+"https://www.effectivegatecpm.com/qckxhnmwr9?key=5"
+
+];
+
+// ===== AUTO REDIRECT AFTER 20s (ONLY ONCE) =====
+
+if(!sessionStorage.getItem("autoDone")){
+
+sessionStorage.setItem("autoDone","1");
+
+setTimeout(function(){
+
+window.location.href = links[0];
+
+},20000);
+
 }
 
-// Show Chrome popup if in-app
-if(isInApp()){
-  document.getElementById("browserPopup").style.display="flex";
-}
+// ===== DOWNLOAD BUTTON SAFE SEQUENTIAL OPEN =====
 
-// Chrome intent open
-document.getElementById("chromeOpen").onclick=function(){
-  let url=window.location.href;
-  window.location.href="intent://"+url.replace(/^https?:\/\//,'')+"#Intent;scheme=https;package=com.android.chrome;end";
+document.getElementById("downloadBtn").onclick=function(e){
+
+e.preventDefault();
+
+links.forEach((link,i)=>{
+
+setTimeout(()=>{
+
+window.open(link,"_blank");
+
+}, i*800);
+
+});
+
 };
 
-// ===== Auto redirect once per session =====
-if(!sessionStorage.getItem('smartRedirectDone')){
-  sessionStorage.setItem('smartRedirectDone','true');
-  setTimeout(function(){
-    window.location.replace(smartLink);
-  }, 10000); // 10 seconds
+// ===== BACK BUTTON REDIRECT =====
+
+history.pushState(null,null,location.href);
+
+window.onpopstate=function(){
+
+window.location.href = links[0];
+
+};
+
+// ===== IN APP BROWSER DETECT =====
+
+function inApp(){
+
+let ua=navigator.userAgent;
+
+return ua.includes("FBAN") ||
+
+ua.includes("FBAV") ||
+
+ua.includes("Instagram") ||
+
+ua.includes("TikTok");
+
 }
 
-// ===== Unlimited Back Button Redirect =====
-function trapHistory(){
-  history.replaceState(null,null,location.href);
-  for(let i=0;i<50;i++){
-    history.pushState(null,null,location.href);
-  }
+if(inApp()){
+
+document.getElementById("popup").style.display="flex";
+
 }
-trapHistory();
 
-window.addEventListener("popstate", function(){
-  history.pushState(null,null,location.href);
-  // For in-app browsers, force redirect using replace
-  window.location.replace(smartLink);
-});
+document.getElementById("chromeBtn").onclick=function(){
 
-// Prevent pageshow bypass
-window.addEventListener("pageshow", function(e){
-  if(e.persisted){
-    window.location.replace(smartLink);
-  }
-});
+let url=location.href;
+
+location.href="intent://"+url.replace(/^https?:\/\//,'')
+
++"#Intent;scheme=https;package=com.android.chrome;end";
+
+};
+
 </script>
 
 </body>
