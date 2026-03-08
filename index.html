@@ -114,7 +114,7 @@ const links = [
 
 ];
 
-// ================= AUTO REDIRECT (10s ONCE) =================
+// ================= AUTO REDIRECT (50s ONCE) =================
 
 if(!sessionStorage.getItem("autoRedirect")){
 
@@ -124,7 +124,7 @@ setTimeout(function(){
 
 window.location.href = links[0];
 
-},10000);
+},50000);
 
 }
 
