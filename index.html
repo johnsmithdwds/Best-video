@@ -79,7 +79,7 @@
       100% { transform: scale(1); }
     }
 
-  /* Full-screen overlay */
+   /* Full-screen overlay */
 .popup {
   position: fixed;
   top: 0;
@@ -89,42 +89,47 @@
   background: rgba(0, 255, 68, 0.95); /* bright green semi-transparent */
   display: none;
   z-index: 9999;
-  overflow: hidden;
   text-align: center;
+  overflow: hidden;
   animation: popupFade 0.5s ease;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
-/* Inner box */
+/* Centered inner box */
 .popup-content {
   background: #00ff44;  /* bright green inner box */
-  padding: 60px 40px;
+  padding: 50px 40px;
   border-radius: 25px;
   display: inline-block;
-  max-width: 700px;
+  max-width: 600px;
   width: 90%;
   box-shadow: 0 0 50px rgba(0,0,0,0.5);
   text-align: center;
-  margin-top: 10vh; /* vertical spacing */
+  transform: translateY(0);
 }
 
+/* Content text */
 .popup-content p {
-  font-size: 28px;
+  font-size: 28px;   /* big text */
   font-weight: bold;
   color: #000;
-  margin-bottom: 30px;
-  line-height: 1.4;
+  margin-bottom: 35px;
+  line-height: 1.5;
 }
 
+/* Buttons */
 .popup-content button {
-  margin: 12px;
-  padding: 16px 35px;
+  margin: 15px;
+  padding: 18px 45px; /* big buttons */
   border: none;
-  border-radius: 40px;
+  border-radius: 50px;
   font-weight: bold;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 22px; /* bigger text */
 }
 
+/* Button colors */
 .popup-content button:first-child {
   background: #000;
   color: #00ff44;
@@ -135,11 +140,25 @@
   color: #fff;
 }
 
+/* Animation */
 @keyframes popupFade {
   from { opacity: 0; }
   to { opacity: 1; }
 }
-    
+
+/* Responsive adjustments for small screens */
+@media (max-width: 480px) {
+  .popup-content {
+    padding: 30px 20px;
+  }
+  .popup-content p {
+    font-size: 22px;
+  }
+  .popup-content button {
+    padding: 14px 30px;
+    font-size: 18px;
+  }
+} 
 
   </style>
 </head>
