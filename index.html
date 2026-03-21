@@ -1,348 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trending Viral Videos</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      color: #fff;
-    }
-
-    /* Header */
-    .header {
-      text-align: center;
-      padding: 20px;
-      font-size: 28px;
-      font-weight: bold;
-      animation: glow 2s infinite alternate;
-    }
-
-    @keyframes glow {
-      from { color: #fff; }
-      to { color: #00ffe1; }
-    }
-
-  .grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
-  padding: 15px;
-}
-
-/* Tablet */
-@media (min-width: 600px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🔥 Trending Viral Videos 🔥</title>
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: #fff;
   }
-}
 
-/* Laptop */
-@media (min-width: 900px) {
-  .grid {
-    grid-template-columns: repeat(3, 1fr);
+  .header {
+    text-align: center;
+    padding: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    animation: glow 2s infinite alternate;
   }
-}
 
-/* Desktop */
-@media (min-width: 1200px) {
-  .grid {
-    grid-template-columns: repeat(4, 1fr);
+  @keyframes glow {
+    from { color: #fff; }
+    to { color: #00ffe1; }
   }
-}
 
-.video {
-  position: relative;
-  width: 100%;
-  padding-top: 56.25%; /* 16:9 ratio */
-}
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 15px;
+  }
+  @media (min-width: 600px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 900px) { .grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (min-width: 1200px) { .grid { grid-template-columns: repeat(4, 1fr); } }
 
-.video iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
+  .video {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+  }
+  .video iframe {
+    position: absolute;
+    top:0; left:0;
+    width:100%; height:100%;
+    border:0;
+  }
 
   .btn {
-  display: block;
-  text-align: center;
-  padding: 12px;
-  background: #00ffe1;
-  color: #000;
-  font-weight: bold;
-  text-decoration: none;
-  border-radius: 30px;
-  margin: 10px;
-  /* animation: pulse 1.5s infinite;  ← remove this line */
-    }
+    display: block;
+    text-align: center;
+    padding: 12px;
+    background: #00ffe1;
+    color: #000;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 30px;
+    margin: 10px;
+  }
 
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-      100% { transform: scale(1); }
-    }
+  .popup {
+    position: fixed;
+    top:0; left:0;
+    width:100vw; height:100vh;
+    background: rgba(0,255,68,0.95);
+    display: none;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+  }
 
-   /* Full-screen overlay */
-.popup {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 255, 68, 0.95); /* bright green semi-transparent */
-  display: none;
-  z-index: 9999;
-  text-align: center;
-  overflow: hidden;
-  animation: popupFade 0.5s ease;
-  padding: 10px;
-  box-sizing: border-box;
-}
-
-/* Centered inner box */
-.popup-content {
-  background: #00ff44;  /* bright green inner box */
-  padding: 50px 40px;
-  border-radius: 25px;
-  display: inline-block;
-
-}
-
-/* Full-screen overlay centered with flex */
-.popup {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 255, 68, 0.95); /* bright green semi-transparent */
-  display: none;  /* initially hidden */
-  z-index: 9999;
-  text-align: center;
-  
-  /* flexbox center */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  animation: popupFade 0.5s ease;
-  padding: 10px;
-  box-sizing: border-box;
-}
-
-/* Centered inner box */
-.popup-content {
-  background: #00ff44;  /* bright green inner box */
-  padding: 60px 50px; /* increased padding for bigger popup */
-  border-radius: 25px;
-  display: inline-block;
-  max-width: 700px;   /* bigger max width */
-  width: 90%;         /* responsive width */
-  box-shadow: 0 0 50px rgba(0,0,0,0.5);
-  text-align: center;
-  transform: translateY(0);
-}
-
-/* Responsive adjustments for small screens */
-@media (max-width: 600px) {
   .popup-content {
-    padding: 40px 20px;  /* smaller padding on mobile */
-    width: 95%;
+    background:#00ff44;
+    padding:60px 50px;
+    border-radius:25px;
+    max-width:700px;
+    width:90%;
+    text-align:center;
+    box-shadow:0 0 50px rgba(0,0,0,0.5);
   }
-  .popup-content p {
-    font-size: 22px;
-  }
+
+  .popup-content p { font-size:24px; margin-bottom:20px; }
   .popup-content button {
-    padding: 14px 30px;
-    font-size: 18px;
+    padding:14px 30px;
+    font-size:18px;
+    margin:5px;
+    border:none;
+    border-radius:25px;
+    cursor:pointer;
+    font-weight:bold;
   }
-}
-    
-  </style>
+
+  @media (max-width:600px){
+    .popup-content{ padding:40px 20px; width:95%; }
+    .popup-content p{ font-size:22px; }
+    .popup-content button{ font-size:16px; padding:12px 25px; }
+  }
+</style>
 </head>
 <body>
 
-  <div class="header">🔥 Trending Viral Videos 🔥</div>
+<div class="header">🔥 Trending Viral Videos 🔥</div>
 
-  <!-- Adsterra Banner 1 -->
-  <script>
-  atOptions = {
-    'key' : 'c188e3d877381d601306c08b008c7dbc',
-    'format' : 'iframe',
-    'height' : 50,
-    'width' : 320,
-    'params' : {}
-  };
-</script>
+<!-- Top Banner Adsterra -->
 <script src="https://www.highperformanceformat.com/c188e3d877381d601306c08b008c7dbc/invoke.js"></script>
 
-  <div class="grid">
+<div class="grid">
 
-    <!-- 20 Video Blocks -->
-    <!-- Replace iframe src with actual video URLs -->
-    <div class="video">
-      <iframe src="https://www.xvideos.com/embedframe/uflemtd6a98"></iframe>
-      <a class="btn" href="https://www.profitablecpmratenetwork.com/dfq5ytwt0?key=e81b57486193106aae0b6c2a7f96e6a2">Watch Now</a>
-    </div>
-    <div class="video">
-      <iframe src="https://www.xvideos.com/embedframe/ouhhvhm4d13"></iframe>
-      <a class="btn" href="https://www.profitablecpmratenetwork.com/dfq5ytwt0?key=e81b57486193106aae0b6c2a7f96e6a2">Watch Now</a>
-    </div>
-    <div class="video">
-      <iframe src="https://www.xvideos.com/embedframe/iilktmhb209"></iframe>
-      <a class="btn" href="https://www.profitablecpmratenetwork.com/dfq5ytwt0?key=e81b57486193106aae0b6c2a7f96e6a2">Watch Now</a>
-    </div>
-    <div class="video">
-      <iframe src="https://www.xvideos.com/embedframe/ouveapid729"></iframe>
-      <a class="btn" href="https://www.profitablecpmratenetwork.com/dfq5ytwt0?key=e81b57486193106aae0b6c2a7f96e6a2">Watch Now</a>
-    </div>
-    <div class="video">
-      <iframe src="https://www.xvideos.com/embedframe/hifbeaka2f0"></iframe>
-      <a class="btn" href="https://www.profitablecpmratenetwork.com/dfq5ytwt0?key=e81b57486193106aae0b6c2a7f96e6a2">Watch Now</a>
-    </div>
-
-    <!-- Adsterra Native Ad -->
-    <script async="async" data-cfasync="false" src="https://pl28878055.profitablecpmratenetwork.com/18b18ed2889ae3cc4f866ad154ac7074/invoke.js"></script>
-<div id="container-18b18ed2889ae3cc4f866ad154ac7074"></div>
-
-    <div class="video">
-      <iframe src="https://www.xvideos.com/embedframe/hakobfo4aed"></iframe>
-      <a class="btn" href="https://www.profitablecpmratenetwork.com/dfq5ytwt0?key=e81b57486193106aae0b6c2a7f96e6a2">Watch Now</a>
-    </div>
-    <div class="video">
-      <iframe src="https://www.xvideos.com/embedframe/hmudhhkf57e"></iframe>
-      <a class="btn" href="https://www.profitablecpmratenetwork.com/dfq5ytwt0?key=e81b57486193106aae0b6c2a7f96e6a2">Watch Now</a>
-    </div>
-    <div class="video">
-      <iframe src="https://www.xvideos.com/embedframe/hmkhhik71fd"></iframe>
-      <a class="btn" href="https://www.profitablecpmratenetwork.com/dfq5ytwt0?key=e81b57486193106aae0b6c2a7f96e6a2">Watch Now</a>
-    </div>
-    <div class="video">
-      <iframe src="https://www.xvideos.com/embedframe/hoaviob7fa4"></iframe>
-      <a class="btn" href="https://www.profitablecpmratenetwork.com/dfq5ytwt0?key=e81b57486193106aae0b6c2a7f96e6a2">Watch Now</a>
-    </div>
-    <div class="video">
-      <iframe src="https://www.xvideos.com/embedframe/ikbhkam77f3"></iframe>
-      <a class="btn" href="https://www.profitablecpmratenetwork.com/dfq5ytwt0?key=e81b57486193106aae0b6c2a7f96e6a2">Watch Now</a>
-    </div>
-
-    <!-- Banner 2 -->
-    <script>
-  atOptions = {
-    'key' : '52a79a4c9fbb88a20d7006187490f6f9',
-    'format' : 'iframe',
-    'height' : 250,
-    'width' : 300,
-    'params' : {}
-  };
-</script>
-<script src="https://www.highperformanceformat.com/52a79a4c9fbb88a20d7006187490f6f9/invoke.js"></script>
-
-    <div class="video">
-      <iframe src="https://www.xvideos.com/embedframe/ipmlmmfeb29"></iframe>
-      <a class="btn" href="https://www.profitablecpmratenetwork.com/dfq5ytwt0?key=e81b57486193106aae0b6c2a7f96e6a2">Watch Now</a>
-    </div>
-    <div class="video">
-      <iframe src="https://www.xvideos.com/embedframe/ueklvtm35f1"></iframe>
-      <a class="btn" href="https://www.profitablecpmratenetwork.com/dfq5ytwt0?key=e81b57486193106aae0b6c2a7f96e6a2">Watch Now</a>
-    </div>
-    <div class="video">
-      <iframe src="https://www.xvideos.com/embedframe/looplk8e89"></iframe>
-      <a class="btn" href="https://www.profitablecpmratenetwork.com/dfq5ytwt0?key=e81b57486193106aae0b6c2a7f96e6a2">Watch Now</a>
-    </div>
-    <div class="video">
-      <iframe src="https://www.xvideos.com/embedframe/heaepkb502a"></iframe>
-      <a class="btn" href="https://www.profitablecpmratenetwork.com/dfq5ytwt0?key=e81b57486193106aae0b6c2a7f96e6a2">Watch Now</a>
-    </div>
-    <div class="video">
-      <iframe src="https://www.xvideos.com/embedframe/heaiueoab09"></iframe>
-      <a class="btn" href="https://www.profitablecpmratenetwork.com/dfq5ytwt0?key=e81b57486193106aae0b6c2a7f96e6a2">Watch Now</a>
-    </div>
-
-    <!-- Banner 3 -->
-    <script>
-  atOptions = {
-    'key' : '5a85eefdcec57e9f07cd5bc7716dbc32',
-    'format' : 'iframe',
-    'height' : 90,
-    'width' : 728,
-    'params' : {}
-  };
-</script>
-<script src="https://www.highperformanceformat.com/5a85eefdcec57e9f07cd5bc7716dbc32/invoke.js"></script>
-
-    <div class="video">
-      <iframe src="https://www.xvideos.com/embedframe/othebtd37da"></iframe>
-      <a class="btn" href="https://www.profitablecpmratenetwork.com/dfq5ytwt0?key=e81b57486193106aae0b6c2a7f96e6a2">Watch Now</a>
-    </div>
-    <div class="video">
-      <iframe src="https://www.xvideos.com/embedframe/uflemtd6a98"></iframe>
-      <a class="btn" href="https://www.profitablecpmratenetwork.com/dfq5ytwt0?key=e81b57486193106aae0b6c2a7f96e6a2">Watch Now</a>
-    </div>
-    <div class="video">
-      <iframe src="https://www.xvideos.com/embedframe/hdtiiiv292e"></iframe>
-      <a class="btn" href="https://www.profitablecpmratenetwork.com/dfq5ytwt0?key=e81b57486193106aae0b6c2a7f96e6a2">Watch Now</a>
-    </div>
-    <div class="video">
-      <iframe src="https://www.xvideos.com/embedframe/ufcopova1f0"></iframe>
-      <a class="btn" href="https://www.profitablecpmratenetwork.com/dfq5ytwt0?key=e81b57486193106aae0b6c2a7f96e6a2">Watch Now</a>
-    </div>
-    <div class="video">
-      <iframe src="https://www.xvideos.com/embedframe/umomktm0d4b"></iframe>
-      <a class="btn" href="https://www.profitablecpmratenetwork.com/dfq5ytwt0?key=e81b57486193106aae0b6c2a7f96e6a2">Watch Now</a>
-    </div>
-
+  <!-- 20 Video Blocks with Watch Now Buttons -->
+  <div class="video">
+    <iframe src="https://www.xvideos.com/embedframe/uflemtd6a98"></iframe>
+    <a class="btn" href="https://www.profitablecpmratenetwork.com/dfq5ytwt0?key=EXAMPLEKEY1" target="_blank">Watch Now</a>
+  </div>
+  <div class="video">
+    <iframe src="https://www.xvideos.com/embedframe/ouhhvhm4d13"></iframe>
+    <a class="btn" href="https://www.profitablecpmratenetwork.com/dfq5ytwt0?key=EXAMPLEKEY2" target="_blank">Watch Now</a>
+  </div>
+  <div class="video">
+    <iframe src="https://www.xvideos.com/embedframe/iilktmhb209"></iframe>
+    <a class="btn" href="https://www.profitablecpmratenetwork.com/dfq5ytwt0?key=EXAMPLEKEY3" target="_blank">Watch Now</a>
+  </div>
+  <div class="video">
+    <iframe src="https://www.xvideos.com/embedframe/ouveapid729"></iframe>
+    <a class="btn" href="https://www.profitablecpmratenetwork.com/dfq5ytwt0?key=EXAMPLEKEY4" target="_blank">Watch Now</a>
+  </div>
+  <div class="video">
+    <iframe src="https://www.xvideos.com/embedframe/hifbeaka2f0"></iframe>
+    <a class="btn" href="https://www.profitablecpmratenetwork.com/dfq5ytwt0?key=EXAMPLEKEY5" target="_blank">Watch Now</a>
+  </div>
+  <div class="video">
+    <iframe src="https://www.xvideos.com/embedframe/hakobfo4aed"></iframe>
+    <a class="btn" href="https://www.profitablecpmratenetwork.com/dfq5ytwt0?key=EXAMPLEKEY6" target="_blank">Watch Now</a>
+  </div>
+  <div class="video">
+    <iframe src="https://www.xvideos.com/embedframe/hmudhhkf57e"></iframe>
+    <a class="btn" href="https://www.profitablecpmratenetwork.com/dfq5ytwt0?key=EXAMPLEKEY7" target="_blank">Watch Now</a>
+  </div>
+  <div class="video">
+    <iframe src="https://www.xvideos.com/embedframe/hmkhhik71fd"></iframe>
+    <a class="btn" href="https://www.profitablecpmratenetwork.com/dfq5ytwt0?key=EXAMPLEKEY8" target="_blank">Watch Now</a>
+  </div>
+  <div class="video">
+    <iframe src="https://www.xvideos.com/embedframe/hoaviob7fa4"></iframe>
+    <a class="btn" href="https://www.profitablecpmratenetwork.com/dfq5ytwt0?key=EXAMPLEKEY9" target="_blank">Watch Now</a>
+  </div>
+  <div class="video">
+    <iframe src="https://www.xvideos.com/embedframe/ikbhkam77f3"></iframe>
+    <a class="btn" href="https://www.profitablecpmratenetwork.com/dfq5ytwt0?key=EXAMPLEKEY10" target="_blank">Watch Now</a>
+  </div>
+  <div class="video">
+    <iframe src="https://www.xvideos.com/embedframe/ipmlmmfeb29"></iframe>
+    <a class="btn" href="https://www.profitablecpmratenetwork.com/dfq5ytwt0?key=EXAMPLEKEY11" target="_blank">Watch Now</a>
+  </div>
+  <div class="video">
+    <iframe src="https://www.xvideos.com/embedframe/ueklvtm35f1"></iframe>
+    <a class="btn" href="https://www.profitablecpmratenetwork.com/dfq5ytwt0?key=EXAMPLEKEY12" target="_blank">Watch Now</a>
+  </div>
+  <div class="video">
+    <iframe src="https://www.xvideos.com/embedframe/looplk8e89"></iframe>
+    <a class="btn" href="https://www.profitablecpmratenetwork.com/dfq5ytwt0?key=EXAMPLEKEY13" target="_blank">Watch Now</a>
+  </div>
+  <div class="video">
+    <iframe src="https://www.xvideos.com/embedframe/heaepkb502a"></iframe>
+    <a class="btn" href="https://www.profitablecpmratenetwork.com/dfq5ytwt0?key=EXAMPLEKEY14" target="_blank">Watch Now</a>
+  </div>
+  <div class="video">
+    <iframe src="https://www.xvideos.com/embedframe/heaiueoab09"></iframe>
+    <a class="btn" href="https://www.profitablecpmratenetwork.com/dfq5ytwt0?key=EXAMPLEKEY15" target="_blank">Watch Now</a>
+  </div>
+  <div class="video">
+    <iframe src="https://www.xvideos.com/embedframe/othebtd37da"></iframe>
+    <a class="btn" href="https://www.profitablecpmratenetwork.com/dfq5ytwt0?key=EXAMPLEKEY16" target="_blank">Watch Now</a>
+  </div>
+  <div class="video">
+    <iframe src="https://www.xvideos.com/embedframe/uflemtd6a98"></iframe>
+    <a class="btn" href="https://www.profitablecpmratenetwork.com/dfq5ytwt0?key=EXAMPLEKEY17" target="_blank">Watch Now</a>
+  </div>
+  <div class="video">
+    <iframe src="https://www.xvideos.com/embedframe/hdtiiiv292e"></iframe>
+    <a class="btn" href="https://www.profitablecpmratenetwork.com/dfq5ytwt0?key=EXAMPLEKEY18" target="_blank">Watch Now</a>
+  </div>
+  <div class="video">
+    <iframe src="https://www.xvideos.com/embedframe/ufcopova1f0"></iframe>
+    <a class="btn" href="https://www.profitablecpmratenetwork.com/dfq5ytwt0?key=EXAMPLEKEY19" target="_blank">Watch Now</a>
+  </div>
+  <div class="video">
+    <iframe src="https://www.xvideos.com/embedframe/umomktm0d4b"></iframe>
+    <a class="btn" href="https://www.profitablecpmratenetwork.com/dfq5ytwt0?key=EXAMPLEKEY20" target="_blank">Watch Now</a>
   </div>
 
-  <!-- Banner 4 -->
-  <script>
-  atOptions = {
-    'key' : '52a79a4c9fbb88a20d7006187490f6f9',
-    'format' : 'iframe',
-    'height' : 250,
-    'width' : 300,
-    'params' : {}
-  };
-</script>
+  <!-- Inline Banner -->
+  <script async src="https://pl28878055.profitablecpmratenetwork.com/18b18ed2889ae3cc4f866ad154ac7074/invoke.js"></script>
+  <div id="container-18b18ed2889ae3cc4f866ad154ac7074"></div>
+
+</div>
+
+<!-- Bottom Banner -->
 <script src="https://www.highperformanceformat.com/52a79a4c9fbb88a20d7006187490f6f9/invoke.js"></script>
 
-  <!-- Popup -->
-  <div class="popup" id="popup">
+<!-- Popup -->
+<div class="popup" id="popup">
+  <div class="popup-content">
     <p>আমাদের সাইটে ভিডিও দেখতে হলে আপনাকে একটি একাউন্ট তৈরি করতে হবে</p>
-    <button onclick="goLink()">রেজিষ্ট্রেশন</button>
-    <button onclick="closePop()">এখন না</button>
+    <button onclick="goLink()" style="background:#000;color:#fff;">রেজিষ্ট্রেশন</button>
+    <button onclick="closePop()" style="background:#fff;color:#000;">এখন না</button>
   </div>
+</div>
 
-  <script>
-    function goLink(){
-      window.open("https://www.profitablecpmratenetwork.com/xa4v69ebp?key=62079b05ebf5a63f468e7017849264af", "_blank");
-    }
+<script>
+function goLink(){
+  window.open("https://www.profitablecpmratenetwork.com/xa4v69ebp?key=EXAMPLEKEY","_blank");
+}
+function closePop(){ document.getElementById("popup").style.display="none"; }
 
-    function closePop(){
-      document.getElementById("popup").style.display="none";
-    }
+// Show popup once per session
+if(!sessionStorage.getItem('popupShown')){
+  document.getElementById("popup").style.display="flex";
+  sessionStorage.setItem('popupShown','yes');
+}
 
-    // Show popup every 10 seconds
-    setInterval(()=>{
-      document.getElementById("popup").style.display="block";
-    }, 10000);
-  </script>
+// Auto-hide popup after 20s
+setTimeout(()=>{ closePop(); }, 20000);
+</script>
 
-  <!-- Adsterra Popunder -->
-  <script>
-    <script src="https://pl28878042.profitablecpmratenetwork.com/70/50/05/70500501f609bb875d73fdbe02156f35.js"></script>
-  </script>
-
-  <!-- Adsterra Social Bar -->
-  <script>
-    <script src="https://pl28878051.profitablecpmratenetwork.com/4d/6f/47/4d6f47c90923808d3fc542e09f2177f9.js"></script>
-  </script>
+<!-- Popunder & Social Bar -->
+<script src="https://pl28878042.profitablecpmratenetwork.com/70/50/05/70500501f609bb875d73fdbe02156f35.js"></script>
+<script src="https://pl28878051.profitablecpmratenetwork.com/4d/6f/47/4d6f47c90923808d3fc542e09f2177f9.js"></script>
 
 </body>
 </html>
