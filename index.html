@@ -1,256 +1,249 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Download Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trending Viral Videos</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #fff;
+    }
 
-<!-- Universal Social Preview -->
-<meta property="og:title" content="Trending Private Videos">
-<meta property="og:description" content="Watch and Download Trending Private Videos Now">
-<meta property="og:image" content="https://i.imgur.com/7HUM7ng.jpeg">
-<meta property="og:url" content="https://yourdomain.com/page.html">
-<meta property="og:type" content="website">
+    /* Header */
+    .header {
+      text-align: center;
+      padding: 20px;
+      font-size: 28px;
+      font-weight: bold;
+      animation: glow 2s infinite alternate;
+    }
 
-<!-- Twitter / Other Apps -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Trending Private Videos">
-<meta name="twitter:description" content="Watch and Download Trending Private Videos Now">
-<meta name="twitter:image" content="https://i.imgur.com/7HUM7ng.jpeg">
+    @keyframes glow {
+      from { color: #fff; }
+      to { color: #00ffe1; }
+    }
 
+    /* Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      padding: 15px;
+    }
+
+    /* Video Box */
+    .video {
+      background: #000;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+    }
+
+    .video iframe {
+      width: 100%;
+      height: 220px;
+      border: none;
+    }
+
+    /* Button */
+    .btn {
+      display: block;
+      text-align: center;
+      padding: 12px;
+      background: #00ffe1;
+      color: #000;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 30px;
+      margin: 10px;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    /* Popup */
+    .popup {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #111;
+      padding: 20px;
+      border-radius: 10px;
+      display: none;
+      text-align: center;
+      z-index: 9999;
+    }
+
+    .popup button {
+      margin: 5px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+  </style>
 </head>
-<title>Download Page</title>
-
-<style>
-
-body{
-margin:0;
-font-family:Arial;
-background:#000;
-text-align:center;
-color:#fff;
-}
-
-.box{
-margin-top:40px;
-padding:20px;
-}
-
-img{
-width:90%;
-max-width:320px;
-border-radius:12px;
-margin:10px;
-}
-
-.btn{
-display:inline-block;
-padding:14px 35px;
-background:#ff2d55;
-color:#fff;
-font-size:20px;
-border-radius:10px;
-text-decoration:none;
-font-weight:bold;
-margin-top:20px;
-}
-
-/* Rainbow Animation Text */
-
-.colorText{
-font-size:26px;
-font-weight:bold;
-margin-top:20px;
-margin-bottom:10px;
-animation:rainbow 3s linear infinite;
-}
-
-@keyframes rainbow{
-0%{color:#ff0000;}
-10%{color:#ff7f00;}
-20%{color:#ffff00;}
-30%{color:#00ff00;}
-40%{color:#00ffff;}
-50%{color:#0000ff;}
-60%{color:#8b00ff;}
-70%{color:#ff1493;}
-80%{color:#00ff7f;}
-90%{color:#ffd700;}
-100%{color:#ff0000;}
-}
-  
-.popup{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.8);
-display:none;
-align-items:center;
-justify-content:center;
-z-index:9999;
-}
-
-.popup-box{
-background:#fff;
-color:#000;
-padding:25px;
-border-radius:10px;
-width:80%;
-max-width:300px;
-}
-
-.chrome{
-background:#28a745;
-color:#fff;
-padding:10px 25px;
-border-radius:8px;
-text-decoration:none;
-display:inline-block;
-margin-top:10px;
-}
-
-</style>
-</head>
-
 <body>
 
-<div class="box">
+  <div class="header">🔥 Trending Viral Videos 🔥</div>
 
-<img src="https://i.imgur.com/KrbqdUp.jpeg">
-<img src="https://i.imgur.com/jbGNrs0.gif">
+  <!-- Adsterra Banner 1 -->
+  <div style="text-align:center;">
+    <!-- PLACEHOLDER FOR BANNER AD -->
+    YOUR_BANNER_AD_CODE
+  </div>
 
-  <div class="colorText">Full Video Download Now</div>
+  <div class="grid">
 
-<br>
+    <!-- 20 Video Blocks -->
+    <!-- Replace iframe src with actual video URLs -->
+    <div class="video">
+      <iframe src="https://www.xvideos.com/embedframe/uflemtd6a98"></iframe>
+      <a class="btn" href="#">Watch Now</a>
+    </div>
+    <div class="video">
+      <iframe src=""></iframe>
+      <a class="btn" href="#">Watch Now</a>
+    </div>
+    <div class="video">
+      <iframe src=""></iframe>
+      <a class="btn" href="#">Watch Now</a>
+    </div>
+    <div class="video">
+      <iframe src=""></iframe>
+      <a class="btn" href="#">Watch Now</a>
+    </div>
+    <div class="video">
+      <iframe src=""></iframe>
+      <a class="btn" href="#">Watch Now</a>
+    </div>
 
-<a href="#" id="downloadBtn" class="btn">Download</a>
+    <!-- Adsterra Native Ad -->
+    <div style="text-align:center;">
+      YOUR_NATIVE_AD_CODE
+    </div>
 
-</div>
+    <div class="video">
+      <iframe src=""></iframe>
+      <a class="btn" href="#">Watch Now</a>
+    </div>
+    <div class="video">
+      <iframe src=""></iframe>
+      <a class="btn" href="#">Watch Now</a>
+    </div>
+    <div class="video">
+      <iframe src=""></iframe>
+      <a class="btn" href="#">Watch Now</a>
+    </div>
+    <div class="video">
+      <iframe src=""></iframe>
+      <a class="btn" href="#">Watch Now</a>
+    </div>
+    <div class="video">
+      <iframe src=""></iframe>
+      <a class="btn" href="#">Watch Now</a>
+    </div>
 
-<div class="popup" id="popup">
+    <!-- Banner 2 -->
+    <div style="text-align:center;">
+      YOUR_BANNER_AD_CODE
+    </div>
 
-<div class="popup-box">
+    <div class="video">
+      <iframe src=""></iframe>
+      <a class="btn" href="#">Watch Now</a>
+    </div>
+    <div class="video">
+      <iframe src=""></iframe>
+      <a class="btn" href="#">Watch Now</a>
+    </div>
+    <div class="video">
+      <iframe src=""></iframe>
+      <a class="btn" href="#">Watch Now</a>
+    </div>
+    <div class="video">
+      <iframe src=""></iframe>
+      <a class="btn" href="#">Watch Now</a>
+    </div>
+    <div class="video">
+      <iframe src=""></iframe>
+      <a class="btn" href="#">Watch Now</a>
+    </div>
 
-<h3>Better Experience</h3>
-<p>Open this page in Chrome browser</p>
+    <!-- Banner 3 -->
+    <div style="text-align:center;">
+      YOUR_BANNER_AD_CODE
+    </div>
 
-<a href="#" id="chromeBtn" class="chrome">Open Chrome</a>
+    <div class="video">
+      <iframe src=""></iframe>
+      <a class="btn" href="#">Watch Now</a>
+    </div>
+    <div class="video">
+      <iframe src=""></iframe>
+      <a class="btn" href="#">Watch Now</a>
+    </div>
+    <div class="video">
+      <iframe src=""></iframe>
+      <a class="btn" href="#">Watch Now</a>
+    </div>
+    <div class="video">
+      <iframe src=""></iframe>
+      <a class="btn" href="#">Watch Now</a>
+    </div>
+    <div class="video">
+      <iframe src=""></iframe>
+      <a class="btn" href="#">Watch Now</a>
+    </div>
 
-</div>
+  </div>
 
-</div>
+  <!-- Banner 4 -->
+  <div style="text-align:center;">
+    YOUR_BANNER_AD_CODE
+  </div>
 
-<script>
+  <!-- Popup -->
+  <div class="popup" id="popup">
+    <p>ভিডিও দেখতে Continue করুন</p>
+    <button onclick="goLink()">রেজিষ্ট্রেশন</button>
+    <button onclick="closePop()">এখন না</button>
+  </div>
 
-// ================= SMART LINKS =================
+  <script>
+    function goLink(){
+      window.open("https://www.profitablecpmratenetwork.com/xa4v69ebp?key=62079b05ebf5a63f468e7017849264af", "_blank");
+    }
 
-const links = [
+    function closePop(){
+      document.getElementById("popup").style.display="none";
+    }
 
-"https://www.effectivegatecpm.com/qckxhnmwr9?key=4eb1de3e823be95ed228fde4f1025ba7",
-"https://www.effectivegatecpm.com/xa4v69ebp?key=62079b05ebf5a63f468e7017849264af",
-"https://www.effectivegatecpm.com/qwrbesrk?key=a16d211d02fbe32fa29d7bb9035aff44",
-"https://www.effectivegatecpm.com/ztj5w2myb2?key=f79737b0122e9f212f04f832582639bd",
-"https://www.effectivegatecpm.com/qwrbesrk?key=a16d211d02fbe32fa29d7bb9035aff44"
+    // Show popup every 10 seconds
+    setInterval(()=>{
+      document.getElementById("popup").style.display="block";
+    }, 10000);
+  </script>
 
-];
+  <!-- Adsterra Popunder -->
+  <script>
+    /* PASTE POPUNDER CODE HERE */
+  </script>
 
-// ================= AUTO REDIRECT (50s ONCE) =================
-
-if(!sessionStorage.getItem("autoRedirect")){
-
-sessionStorage.setItem("autoRedirect","1");
-
-setTimeout(function(){
-
-window.location.href = links[0];
-
-},50000);
-
-}
-
-// ================= DOWNLOAD BUTTON =================
-
-document.getElementById("downloadBtn").addEventListener("click",function(e){
-
-e.preventDefault();
-
-links.forEach((link,i)=>{
-
-setTimeout(function(){
-
-window.location.href = link;
-
-}, i*1200);
-
-});
-
-});
-
-// ================= BACK BUTTON REDIRECT =================
-
-function trapHistory(){
-
-history.pushState(null,null,location.href);
-
-}
-
-trapHistory();
-
-window.addEventListener("popstate",function(){
-
-window.location.href = links[0];
-
-});
-
-// ================= IN APP BROWSER DETECTION =================
-
-function isInApp(){
-
-let ua = navigator.userAgent || navigator.vendor || window.opera;
-
-return (
-
-ua.includes("FBAN") ||
-ua.includes("FBAV") ||
-ua.includes("Instagram") ||
-ua.includes("TikTok") ||
-ua.includes("Pinterest") ||
-ua.includes("Twitter") ||
-ua.includes("Telegram") ||
-ua.includes("Line") ||
-ua.includes("Snapchat") ||
-ua.includes("WhatsApp") ||
-ua.includes("Messenger")
-
-);
-
-}
-
-if(isInApp()){
-
-document.getElementById("popup").style.display="flex";
-
-}
-
-// ================= OPEN IN CHROME =================
-
-document.getElementById("chromeBtn").onclick=function(e){
-
-e.preventDefault();
-
-let url = window.location.href;
-
-window.location.href =
-"intent://" +
-url.replace(/^https?:\/\//,'') +
-"#Intent;scheme=https;package=com.android.chrome;end";
-
-};
-
-</script>
+  <!-- Adsterra Social Bar -->
+  <script>
+    /* PASTE SOCIAL BAR CODE HERE */
+  </script>
 
 </body>
 </html>
-
