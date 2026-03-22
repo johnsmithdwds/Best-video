@@ -73,7 +73,30 @@
 /* Zoom Animation */
 @keyframes zoomIn {
   from {
-    transform: scale(0.5);
+
+  .
+
+  @media (max-width:600px){
+    .popup-content{ padding:40px 20px; width:95%; }
+    .popup-content p{ font-size:22px; }
+    .popup-content button{ font-size:16px; padding:12px 25px; }
+  }
+
+.popup {
+  position: fixed;
+  top:0; left:0;
+  width:100vw; height:100vh;
+  background: rgba(0,0,0,0.7);
+  display: none;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+}
+
+/* Smooth Zoom */
+@keyframes zoomIn {
+  from {
+    transform: scale(0.7);
     opacity: 0;
   }
   to {
@@ -83,61 +106,47 @@
 }
 
 .popup-content {
-  background:#00ff44;
-  padding:25px 20px;
-  border-radius:15px;
-  max-width:320px;
-  width:85%;
+  background:#ffffff;
+  padding:18px 15px;
+  border-radius:12px;
+  max-width:260px;
+  width:80%;
   text-align:center;
-  position: relative;
-  animation: zoomIn 0.3s ease;
-}
-
-/* Close Button (X) */
-.close {
-  position:absolute;
-  top:8px;
-  right:12px;
-  font-size:20px;
-  cursor:pointer;
-  color:#000;
-  font-weight:bold;
+  animation: zoomIn 0.25s ease;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
 
 /* Text */
 .popup-content p {
-  font-size:15px;
-  margin-bottom:15px;
-  color:#000;
-  font-weight:bold;
+  font-size:14px;
+  color:#111;
+  margin-bottom:12px;
+  font-weight:600;
 }
 
 /* Buttons */
-.btn1 {
-  background:#000;
-  color:#fff;
-}
-.btn2 {
-  background:#fff;
-  color:#000;
-}
-
 .popup-content button {
-  padding:10px 15px;
-  font-size:14px;
+  padding:8px 12px;
+  font-size:13px;
   margin:5px;
   border:none;
   border-radius:20px;
   cursor:pointer;
   font-weight:bold;
 }
-  .
 
-  @media (max-width:600px){
-    .popup-content{ padding:40px 20px; width:95%; }
-    .popup-content p{ font-size:22px; }
-    .popup-content button{ font-size:16px; padding:12px 25px; }
-  }
+/* Primary Button */
+.popup-content button:first-child {
+  background:#000;
+  color:#fff;
+}
+
+/* Secondary Button */
+.popup-content button:last-child {
+  background:#eee;
+  color:#000;
+}
+    
 </style>
 </head>
 <body>
