@@ -60,36 +60,78 @@
   }
 
   .popup {
-    position: fixed;
-    top:0; left:0;
-    width:100vw; height:100vh;
-    background: rgba(0,255,68,0.95);
-    display: none;
-    justify-content:center;
-    align-items:center;
-    z-index:9999;
-  }
+  position: fixed;
+  top:0; left:0;
+  width:100vw; height:100vh;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+}
 
-  .popup-content {
-    background:#00ff44;
-    padding:60px 50px;
-    border-radius:25px;
-    max-width:700px;
-    width:90%;
-    text-align:center;
-    box-shadow:0 0 50px rgba(0,0,0,0.5);
+/* Zoom Animation */
+@keyframes zoomIn {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
   }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
 
-  .popup-content p { font-size:24px; margin-bottom:20px; }
-  .popup-content button {
-    padding:14px 30px;
-    font-size:18px;
-    margin:5px;
-    border:none;
-    border-radius:25px;
-    cursor:pointer;
-    font-weight:bold;
-  }
+.popup-content {
+  background:#00ff44;
+  padding:25px 20px;
+  border-radius:15px;
+  max-width:320px;
+  width:85%;
+  text-align:center;
+  position: relative;
+  animation: zoomIn 0.3s ease;
+}
+
+/* Close Button (X) */
+.close {
+  position:absolute;
+  top:8px;
+  right:12px;
+  font-size:20px;
+  cursor:pointer;
+  color:#000;
+  font-weight:bold;
+}
+
+/* Text */
+.popup-content p {
+  font-size:15px;
+  margin-bottom:15px;
+  color:#000;
+  font-weight:bold;
+}
+
+/* Buttons */
+.btn1 {
+  background:#000;
+  color:#fff;
+}
+.btn2 {
+  background:#fff;
+  color:#000;
+}
+
+.popup-content button {
+  padding:10px 15px;
+  font-size:14px;
+  margin:5px;
+  border:none;
+  border-radius:20px;
+  cursor:pointer;
+  font-weight:bold;
+}
+  .
 
   @media (max-width:600px){
     .popup-content{ padding:40px 20px; width:95%; }
@@ -211,16 +253,19 @@
 function goLink(){
   window.open("https://www.profitablecpmratenetwork.com/xa4v69ebp?key=62079b05ebf5a63f468e7017849264af","_blank");
 }
-function closePop(){ document.getElementById("popup").style.display="none"; }
 
-// Show popup once per session
+function closePop(){
+  document.getElementById("popup").style.display="none";
+}
+
+/* Show once */
 if(!sessionStorage.getItem('popupShown')){
   document.getElementById("popup").style.display="flex";
   sessionStorage.setItem('popupShown','yes');
 }
 
-// Auto-hide popup after 20s
-setTimeout(()=>{ closePop(); }, 20000);
+/* Auto close after 15 sec */
+setTimeout(()=>{ closePop(); }, 15000);
 </script>
 
 <!-- Popunder & Social Bar -->
