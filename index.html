@@ -234,10 +234,21 @@
 
 <!-- Popup -->
 <!-- Popup -->
+<!-- Lazy load videos & Button hover animation -->
+<style>
+  .video iframe {
+    loading: lazy; /* Lazy load */
+  }
+  .btn:hover {
+    transform: scale(1.1);
+    transition: 0.3s;
+  }
+</style>
+
 <!-- Popup -->
 <div class="popup" id="popup">
   <div class="popup-content">
-    <p>🔒 নতুন নতুন ভিডিও দেখতে এখনই আমাদের ওয়েবসাইটে একটা একাউন্ট খুলুন</p>
+    <p>🔒 Full Video দেখতে হলে এখনই ফ্রি একাউন্ট খুলুন</p>
     <button onclick="goLink()">🚀 রেজিষ্ট্রেশন</button>
     <button onclick="closePop()">❌ এখন না</button>
   </div>
@@ -248,21 +259,33 @@
 function goLink(){
   window.open("https://www.profitablecpmratenetwork.com/xa4v69ebp?key=62079b05ebf5a63f468e7017849264af","_blank");
 }
-
 function closePop(){
   document.getElementById("popup").style.display = "none";
 }
 
-// Show popup once per session and auto-close
-document.addEventListener('DOMContentLoaded', function(){
+// Show popup once per session, auto-close 15s
+window.onload = function(){
   if(!sessionStorage.getItem('popupShown')){
     document.getElementById("popup").style.display = "flex";
     sessionStorage.setItem('popupShown','yes');
+    setTimeout(closePop,15000);
+  }
+};
 
-    // Auto-close after 50 seconds
-    setTimeout(closePop, 50000);
+// Exit popup (when user tries to leave page)
+document.addEventListener('mouseout', function(e) {
+  if(e.clientY < 5 && !sessionStorage.getItem('exitPopupShown')){
+    document.getElementById('popup').style.display='flex';
+    sessionStorage.setItem('exitPopupShown','yes');
+    setTimeout(closePop,15000);
   }
 });
+
+// Floating corner ad
+var floatingAd = document.createElement('div');
+floatingAd.style = 'position:fixed;bottom:10px;right:10px;z-index:9999;';
+floatingAd.innerHTML = '<a href="https://www.profitablecpmratenetwork.com/xa4v69ebp?key=62079b05ebf5a63f468e7017849264af" target="_blank"><img src="https://via.placeholder.com/150x50?text=Ad" style="border-radius:10px;"></a>';
+document.body.appendChild(floatingAd);
 </script>
 
 <!-- Popunder & Social Bar -->
