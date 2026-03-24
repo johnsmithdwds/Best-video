@@ -282,10 +282,24 @@ document.addEventListener('mouseout', function(e) {
 });
 
 <script>
-// Super small floating corner ad
+// Small but visible floating corner ad
 var floatingAd = document.createElement('div');
-floatingAd.style = 'position:fixed;bottom:5px;right:5px;z-index:9999;pointer-events:auto;'; 
-floatingAd.innerHTML = '<a href="https://www.profitablecpmratenetwork.com/xa4v69ebp?key=62079b05ebf5a63f468e7017849264af" target="_blank"><img src="https://i.imgur.com/gW3crXq.jpeg" style="width:80px;height:25px;border-radius:5px;box-shadow:0 0 5px rgba(0,0,0,0.3);"></a>';
+floatingAd.style.position = 'fixed';
+floatingAd.style.bottom = '10px';
+floatingAd.style.right = '10px';
+floatingAd.style.zIndex = '99999';
+floatingAd.style.pointerEvents = 'auto';
+floatingAd.style.display = 'block';
+floatingAd.style.opacity = '1';
+floatingAd.style.transition = 'all 0.3s ease';
+
+floatingAd.innerHTML = `
+  <a href="https://www.profitablecpmratenetwork.com/xa4v69ebp?key=62079b05ebf5a63f468e7017849264af" target="_blank">
+    <img src="https://i.imgur.com/gW3crXq.jpeg" 
+         style="width:90px; height:35px; border-radius:5px; box-shadow:0 0 5px rgba(0,0,0,0.3);">
+  </a>
+`;
+
 document.body.appendChild(floatingAd);
 </script>
 
