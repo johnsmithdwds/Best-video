@@ -255,31 +255,34 @@
 </div>
 
 <script>
-// Popup functions
-function goLink(){
-  window.open("https://www.profitablecpmratenetwork.com/xa4v69ebp?key=62079b05ebf5a63f468e7017849264af","_blank");
+function goLink(){ 
+    window.open("https://www.profitablecpmratenetwork.com/xa4v69ebp?key=62079b05ebf5a63f468e7017849264af","_blank"); 
 }
-function closePop(){
-  document.getElementById("popup").style.display = "none";
+function closePop(){ 
+    document.getElementById('popup').style.display = 'none'; 
 }
 
-// Show popup once per session, auto-close 15s
-window.onload = function(){
-  if(!sessionStorage.getItem('popupShown')){
-    document.getElementById("popup").style.display = "flex";
-    sessionStorage.setItem('popupShown','yes');
-    setTimeout(closePop,15000);
-  }
-};
-
-// Exit popup (when user tries to leave page)
-document.addEventListener('mouseout', function(e) {
-  if(e.clientY < 5 && !sessionStorage.getItem('exitPopupShown')){
-    document.getElementById('popup').style.display='flex';
-    sessionStorage.setItem('exitPopupShown','yes');
-    setTimeout(closePop,15000);
-  }
+// Show popup **once per visit**
+document.addEventListener("DOMContentLoaded", function(){
+    var popup = document.getElementById('popup');
+    // check if "popupShownThisVisit" exists in sessionStorage
+    if(!sessionStorage.getItem('popupShownThisVisit')){
+        popup.style.display = "flex";         // show popup
+        sessionStorage.setItem('popupShownThisVisit','yes'); // mark as shown for this visit
+        setTimeout(closePop,15000);           // auto close after 15s
+    }
 });
+
+// Exit intent popup
+document.addEventListener('mouseout', function(e){
+    var popup = document.getElementById('popup');
+    if(e.clientY < 5 && !sessionStorage.getItem('popupShownThisVisit')){
+        popup.style.display='flex';
+        sessionStorage.setItem('popupShownThisVisit','yes');
+        setTimeout(closePop,15000);
+    }
+});
+</script>
 
 <script>
 // Wait until DOM is fully loaded
