@@ -82,89 +82,53 @@
     .popup-content button{ font-size:16px; padding:12px 25px; }
   }
 
-.popup {
-  position: fixed;
-  top:0; left:0;
-  width:100vw; height:100vh;
-  background: rgba(0,0,0,0.7);
-  display: none;
-  justify-content:center;
-  align-items:center;
-  z-index:9999;
-}
-
-/* Smooth Zoom */
-@keyframes zoomIn {
-  from {
-    transform: scale(0.7);
-    opacity: 0;
-  }
-  to {
 
 .popup {
   position: fixed;
   top:0; left:0;
   width:100vw; height:100vh;
   background: rgba(0,0,0,0.6);
-  display: flex;
+  display: none;
   justify-content:center;
   align-items:center;
   z-index:9999;
 }
 
-/* Animation */
-@keyframes zoomIn {
-  from {
-    transform: scale(0.6);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
 .popup-content {
   background: linear-gradient(135deg, #ff512f, #dd2476);
-  padding: 25px 20px;
+  padding: 25px;
   border-radius: 15px;
-  max-width: 300px;
   width: 85%;
+  max-width: 300px;
   text-align: center;
-  animation: zoomIn 0.3s ease;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.5);
 }
 
-/* Text */
 .popup-content p {
-  font-size: 16px;
-  color: #fff;
-  margin-bottom: 15px;
-  font-weight: bold;
+  color:#fff;
+  font-size:16px;
+  margin-bottom:15px;
 }
 
 .popup-content button {
-  padding: 14px 20px;
-  font-size: 16px;
-  margin: 8px;
-  border: none;
-  border-radius: 30px;
-  cursor: pointer;
-  font-weight: bold;
-  width: 100%;
+  width:100%;
+  padding:14px;
+  margin:6px 0;
+  border:none;
+  border-radius:25px;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
 }
 
-/* Primary (Register) */
 .popup-content button:first-child {
-  background: #00ffe1;
-  color: #000;
+  background:#00ffe1;
+  color:#000;
 }
 
-/* Secondary (Close) */
 .popup-content button:last-child {
-  background: #fff;
-  color: #000;
-  }
+  background:#fff;
+  color:#000;
+}
     
 </style>
 </head>
@@ -269,16 +233,17 @@
 <script src="https://www.highperformanceformat.com/52a79a4c9fbb88a20d7006187490f6f9/invoke.js"></script>
 
 <!-- Popup -->
-<div class="popup-content">
-  <p>🔒 Full Video দেখতে হলে এখনই ফ্রি একাউন্ট খুলুন</p>
+<!-- Popup -->
+<div class="popup" id="popup">
+  <div class="popup-content">
+    <p>🔒 Full Video দেখতে হলে এখনই ফ্রি একাউন্ট খুলুন</p>
 
-  <!-- Redirect Button -->
-  <button onclick="goLink()">🚀 রেজিষ্ট্রেশন</button>
-
-  <!-- শুধু Close -->
-  <button onclick="closePop()">❌ এখন না</button>
+    <button onclick="goLink()">🚀 রেজিষ্ট্রেশন</button>
+    <button onclick="closePop()">❌ এখন না</button>
+  </div>
 </div>
 
+<script>
 function goLink(){
   window.open("https://www.profitablecpmratenetwork.com/xa4v69ebp?key=62079b05ebf5a63f468e7017849264af","_blank");
 }
@@ -286,6 +251,11 @@ function goLink(){
 function closePop(){
   document.getElementById("popup").style.display="none";
 }
+
+window.onload = function(){
+  document.getElementById("popup").style.display="flex";
+}
+  </script>
 
 /* Show once */
 if(!sessionStorage.getItem('popupShown')){
