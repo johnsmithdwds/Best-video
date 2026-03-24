@@ -234,37 +234,34 @@
 
 <!-- Popup -->
 <!-- Popup -->
+<!-- Popup -->
 <div class="popup" id="popup">
   <div class="popup-content">
     <p>🔒 Full Video দেখতে হলে এখনই ফ্রি একাউন্ট খুলুন</p>
-
     <button onclick="goLink()">🚀 রেজিষ্ট্রেশন</button>
     <button onclick="closePop()">❌ এখন না</button>
   </div>
 </div>
 
 <script>
+// Popup functions
 function goLink(){
   window.open("https://www.profitablecpmratenetwork.com/xa4v69ebp?key=62079b05ebf5a63f468e7017849264af","_blank");
 }
 
 function closePop(){
-  document.getElementById("popup").style.display="none";
+  document.getElementById("popup").style.display = "none";
 }
 
+// Show popup once per session and auto-close after 15s
 window.onload = function(){
-  document.getElementById("popup").style.display="flex";
-}
-  </script>
+  if(!sessionStorage.getItem('popupShown')){
+    document.getElementById("popup").style.display = "flex";
+    sessionStorage.setItem('popupShown', 'yes');
 
-/* Show once */
-if(!sessionStorage.getItem('popupShown')){
-  document.getElementById("popup").style.display="flex";
-  sessionStorage.setItem('popupShown','yes');
-}
-
-/* Auto close after 15 sec */
-setTimeout(()=>{ closePop(); }, 15000);
+    setTimeout(closePop, 15000); // Auto close after 15 seconds
+  }
+};
 </script>
 
 <!-- Popunder & Social Bar -->
