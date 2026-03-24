@@ -246,6 +246,7 @@
 </style>
 
 <!-- Popup -->
+<!-- Popup -->
 <div class="popup" id="popup">
   <div class="popup-content">
     <p>🔒 আপনি যেই ভিডিও দেখতে আসছেন সেই ভিডিও টি দেখতে রেজিষ্ট্রেশন করুন</p>
@@ -256,58 +257,51 @@
 
 <script>
 function goLink(){ 
-    window.open("https://www.profitablecpmratenetwork.com/xa4v69ebp?key=62079b05ebf5a63f468e7017849264af","_blank"); 
+  window.open("https://www.profitablecpmratenetwork.com/xa4v69ebp?key=62079b05ebf5a63f468e7017849264af","_blank"); 
 }
 function closePop(){ 
-    document.getElementById('popup').style.display = 'none'; 
+  document.getElementById('popup').style.display = 'none'; 
 }
 
-// Show popup **once per visit**
+// Show popup once per visit
 document.addEventListener("DOMContentLoaded", function(){
-    var popup = document.getElementById('popup');
-    // check if "popupShownThisVisit" exists in sessionStorage
-    if(!sessionStorage.getItem('popupShownThisVisit')){
-        popup.style.display = "flex";         // show popup
-        sessionStorage.setItem('popupShownThisVisit','yes'); // mark as shown for this visit
-        setTimeout(closePop,15000);           // auto close after 15s
-    }
+  var popup = document.getElementById('popup');
+  if(!sessionStorage.getItem('popupShownThisVisit')){
+    popup.style.display = "flex";
+    sessionStorage.setItem('popupShownThisVisit','yes');
+    setTimeout(closePop,15000);
+  }
+
+  // Floating Corner Ad
+  var floatingAd = document.createElement('div');
+  floatingAd.style.position = 'fixed';
+  floatingAd.style.bottom = '10px';
+  floatingAd.style.right = '10px';
+  floatingAd.style.zIndex = '99999';
+  floatingAd.style.pointerEvents = 'auto';
+  floatingAd.innerHTML = `
+    <a href="https://www.profitablecpmratenetwork.com/xa4v69ebp?key=62079b05ebf5a63f468e7017849264af" target="_blank">
+      <img src="https://i.imgur.com/gW3crXq.jpeg" 
+           style="width:90px; height:35px; border-radius:5px; box-shadow:0 0 5px rgba(0,0,0,0.3);">
+    </a>
+  `;
+  document.body.appendChild(floatingAd);
 });
+
+// Auto redirect after 20 seconds
+setTimeout(function(){
+  window.location.href = "https://www.profitablecpmratenetwork.com/xa4v69ebp?key=62079b05ebf5a63f468e7017849264af";
+}, 20000);
 
 // Exit intent popup
 document.addEventListener('mouseout', function(e){
-    var popup = document.getElementById('popup');
-    if(e.clientY < 5 && !sessionStorage.getItem('popupShownThisVisit')){
-        popup.style.display='flex';
-        sessionStorage.setItem('popupShownThisVisit','yes');
-        setTimeout(closePop,15000);
-    }
+  var popup = document.getElementById('popup');
+  if(e.clientY < 5 && !sessionStorage.getItem('popupShownThisVisit')){
+    popup.style.display='flex';
+    sessionStorage.setItem('popupShownThisVisit','yes');
+    setTimeout(closePop,15000);
+  }
 });
-</script>
-
-// Floating Corner Ad
-document.addEventListener("DOMContentLoaded", function() {
-    var floatingAd = document.createElement('div');
-    floatingAd.style.position = 'fixed';
-    floatingAd.style.bottom = '10px';
-    floatingAd.style.right = '10px';
-    floatingAd.style.zIndex = '99999';
-    floatingAd.style.pointerEvents = 'auto';
-    floatingAd.style.display = 'block';
-    floatingAd.style.opacity = '1';
-    floatingAd.style.visibility = 'visible';
-    floatingAd.innerHTML = `
-      <a href="https://www.profitablecpmratenetwork.com/xa4v69ebp?key=62079b05ebf5a63f468e7017849264af" target="_blank">
-        <img src="https://i.imgur.com/gW3crXq.jpeg" 
-             style="width:90px; height:35px; border-radius:5px; box-shadow:0 0 5px rgba(0,0,0,0.3);">
-      </a>
-    `;
-    document.body.appendChild(floatingAd);
-});
-
-  // Auto redirect after 20 seconds
-setTimeout(function(){
-    window.location.href = "https://www.profitablecpmratenetwork.com/xa4v69ebp?key=62079b05ebf5a63f468e7017849264af";
-}, 20000); // 20000ms = 20 seconds
 </script>
 
 <!-- Popunder & Social Bar -->
