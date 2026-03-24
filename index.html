@@ -143,29 +143,28 @@
   font-weight: bold;
 }
 
-/* Buttons */
 .popup-content button {
-  padding: 10px 15px;
-  font-size: 14px;
-  margin: 6px;
+  padding: 14px 20px;
+  font-size: 16px;
+  margin: 8px;
   border: none;
-  border-radius: 25px;
+  border-radius: 30px;
   cursor: pointer;
   font-weight: bold;
+  width: 100%;
 }
 
-/* Primary */
+/* Primary (Register) */
 .popup-content button:first-child {
   background: #00ffe1;
   color: #000;
 }
 
-/* Secondary */
+/* Secondary (Close) */
 .popup-content button:last-child {
   background: #fff;
   color: #000;
-      }    
-
+  }
     
 </style>
 </head>
@@ -270,15 +269,16 @@
 <script src="https://www.highperformanceformat.com/52a79a4c9fbb88a20d7006187490f6f9/invoke.js"></script>
 
 <!-- Popup -->
-<div class="popup" id="popup">
-  <div class="popup-content">
-    <p>আমাদের সাইটে ভিডিও দেখতে হলে আপনাকে একটি একাউন্ট তৈরি করতে হবে</p>
-    <button onclick="goLink()" style="background:#000;color:#fff;">রেজিষ্ট্রেশন</button>
-    <button onclick="closePop()" style="background:#fff;color:#000;">এখন না</button>
-  </div>
+<div class="popup-content">
+  <p>🔒 Full Video দেখতে হলে এখনই ফ্রি একাউন্ট খুলুন</p>
+
+  <!-- Redirect Button -->
+  <button onclick="goLink()">🚀 রেজিষ্ট্রেশন</button>
+
+  <!-- শুধু Close -->
+  <button onclick="closePop()">❌ এখন না</button>
 </div>
 
-<script>
 function goLink(){
   window.open("https://www.profitablecpmratenetwork.com/xa4v69ebp?key=62079b05ebf5a63f468e7017849264af","_blank");
 }
