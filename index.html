@@ -253,15 +253,16 @@ function closePop(){
   document.getElementById("popup").style.display = "none";
 }
 
-// Show popup once per session and auto-close after 15s
-window.onload = function(){
+// Show popup once per session and auto-close
+document.addEventListener('DOMContentLoaded', function(){
   if(!sessionStorage.getItem('popupShown')){
     document.getElementById("popup").style.display = "flex";
-    sessionStorage.setItem('popupShown', 'yes');
+    sessionStorage.setItem('popupShown','yes');
 
-    setTimeout(closePop, 15000); // Auto close after 15 seconds
+    // Auto-close after 15 seconds
+    setTimeout(closePop, 15000);
   }
-};
+});
 </script>
 
 <!-- Popunder & Social Bar -->
