@@ -247,30 +247,6 @@
 
 <!-- Popup -->
 <!-- Popup -->
-<div class="popup" id="popup">
-  <div class="popup-content">
-    <p>🔒 To watch the video you came for, please register first</p>
-    <button onclick="goLink()">🚀 register</button>
-    <button onclick="closePop()">❌ Not now</button>
-  </div>
-</div>
-
-<script>
-function goLink(){ 
-  window.open("https://www.profitablecpmratenetwork.com/xa4v69ebp?key=62079b05ebf5a63f468e7017849264af","_blank"); 
-}
-function closePop(){ 
-  document.getElementById('popup').style.display = 'none'; 
-}
-
-// Show popup once per visit
-document.addEventListener("DOMContentLoaded", function(){
-  var popup = document.getElementById('popup');
-  if(!sessionStorage.getItem('popupShownThisVisit')){
-    popup.style.display = "flex";
-    sessionStorage.setItem('popupShownThisVisit','yes');
-    setTimeout(closePop,15000);
-  }
 
   // Floating Corner Ad
   var floatingAd = document.createElement('div');
