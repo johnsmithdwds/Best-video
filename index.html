@@ -82,59 +82,74 @@
     .popup-content button{ font-size:16px; padding:12px 25px; }
   }
 
-
-.popup {
-  position: fixed;
-  top:0; left:0;
-  width:100vw; height:100vh;
-  background: rgba(0,0,0,0.6);
-  display: none;
+.popup{
+  position:fixed;
+  top:0;left:0;
+  width:100%;height:100%;
+  background:rgba(0,0,0,0.8);
+  display:none;
   justify-content:center;
   align-items:center;
   z-index:9999;
 }
 
-.popup-content {
-  background: linear-gradient(135deg, #ff512f, #dd2476);
-  padding: 25px;
-  border-radius: 15px;
-  width: 85%;
-  max-width: 300px;
-  text-align: center;
+.popup-content{
+  background: linear-gradient(135deg,#ff416c,#ff4b2b);
+  padding:25px;
+  border-radius:15px;
+  text-align:center;
+  width:90%;
+  max-width:320px;
+  animation: zoomIn 0.4s ease;
 }
 
-.popup-content p {
-  color:#fff;
+.popup-content p{
   font-size:16px;
   margin-bottom:15px;
 }
 
-.popup-content button {
+.popup-content button{
   width:100%;
-  padding:14px;
-  margin:6px 0;
+  padding:12px;
+  margin-top:10px;
   border:none;
   border-radius:25px;
-  font-size:16px;
   font-weight:bold;
+  font-size:16px;
   cursor:pointer;
 }
 
-.popup-content button:first-child {
+.popup-content button:first-child{
   background:#00ffe1;
   color:#000;
 }
 
-.popup-content button:last-child {
+.popup-content button:last-child{
   background:#fff;
-  color:#000;
 }
+
+@keyframes zoomIn{
+  from{transform:scale(0.5); opacity:0;}
+  to{transform:scale(1); opacity:1;}
+}
+</style>
+
     
 </style>
 </head>
 <body>
 
 <div class="header">🔥 Trending Viral Videos 🔥</div>
+
+<!-- ✅ এখানে দাও -->
+<div id="popup" class="popup">
+  <div class="popup-content">
+    <p>🔥 Premium HD Video Unlock করতে চান?<br>👇 এখনই Register করুন</p>
+    
+    <button onclick="goOffer()">👉 Register Now</button>
+    <button onclick="closePop()">❌ এখন না</button>
+  </div>
+</div>
 
 <!-- Top Banner Adsterra -->
 <script src="https://www.highperformanceformat.com/c188e3d877381d601306c08b008c7dbc/invoke.js"></script>
@@ -247,6 +262,28 @@
 
 <!-- Popup -->
 <!-- Popup -->
+  <!-- ✅ একদম নিচে -->
+<script>
+// 5 sec পরে popup (১ বার)
+if(!sessionStorage.getItem("pop")){
+  setTimeout(function(){
+    document.getElementById("popup").style.display="flex";
+    sessionStorage.setItem("pop","1");
+  },5000);
+}
+
+// Smartlink open
+function goOffer(){
+  window.open("https://www.profitablecpmratenetwork.com/xa4v69ebp?key=62079b05ebf5a63f468e7017849264af","_blank");
+}
+
+// Close
+function closePop(){
+  document.getElementById("popup").style.display="none";
+}
+</script>
+
+</body>
 
   // Floating Corner Ad
   var floatingAd = document.createElement('div');
