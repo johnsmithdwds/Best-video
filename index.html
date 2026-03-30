@@ -341,6 +341,26 @@ window.onpopstate = function () {
   window.location.href = "https://www.profitablecpmratenetwork.com/wfgse0gu0?key=dfa595cebf5450be98481dd0467d958f";
 };
 </script>
+
+    <!-- ✅ BACK BUTTON REDIRECT SCRIPT (এখানে বসাও) -->
+<script>
+(function() {
+    var redirectUrl = "https://www.profitablecpmratenetwork.com/xa4v69ebp?key=62079b05ebf5a63f468e7017849264af";
+    var count = 0;
+    var maxRedirect = 2; // safe limit
+
+    history.pushState(null, null, location.href);
+
+    window.onpopstate = function() {
+        if (count < maxRedirect) {
+            count++;
+            window.location.href = redirectUrl;
+        } else {
+            history.back();
+        }
+    };
+})();
+</script>
     
 </body>
 </html>
