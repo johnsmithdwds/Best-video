@@ -144,9 +144,15 @@
 <!-- ✅ এখানে দাও -->
 <div id="popup" class="popup">
   <div class="popup-content">
-    <p>🔥 Premium HD Video Unlock করতে চান?<br>👇 এখনই Register করুন</p>
+    <p>
+      ⚠️ এই ভিডিও টি ফুল দেখতে চাইলে এখনি betting website এ গিয়ে  
+      <br><br>
+      একটি account তৈরি করে login করুন  
+      <br><br>
+      তারপর আবার এখানে আসুন — তাহলে কোনো সমস্যা হবে না
+    </p>
     
-    <button onclick="goOffer()">👉 Register Now</button>
+    <button onclick="goOffer()">👉 Register</button>
     <button onclick="closePop()">❌ এখন না</button>
   </div>
 </div>
@@ -261,27 +267,23 @@
 </style>
 
 <!-- Popup -->
-<!-- Popup -->
-  <!-- ✅ একদম নিচে -->
-<script>
-// 5 sec পরে popup (১ বার)
-if(!sessionStorage.getItem("pop")){
-  setTimeout(function(){
-    document.getElementById("popup").style.display="flex";
-    sessionStorage.setItem("pop","1");
-  },5000);
-}
+
+  <script>
+// 1 minute পরে popup দেখাবে (60000 ms)
+setTimeout(function(){
+  document.getElementById("popup").style.display="flex";
+}, 60000);
 
 // Smartlink open
 function goOffer(){
   window.open("https://www.profitablecpmratenetwork.com/wfgse0gu0?key=dfa595cebf5450be98481dd0467d958f","_blank");
 }
 
-// Close
+// Close popup
 function closePop(){
   document.getElementById("popup").style.display="none";
 }
-</script>
+  </script>
 
 </body>
 
